@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List repositories in the organization and filter by module and HCL
-limit=10
+limit=500
 repos=$(gh search repos "org:hmcts" "language:HCL" "module in:name" --limit $limit | awk '{print $1}')
 
 # Define the new section header
@@ -21,14 +21,15 @@ fi
 # Append the new section header and table header to the README.md file
 {
     echo -e "\n$new_section_header\n"
-    echo "| Module | Consuming Count |"
-    echo "| --- | --- |"
+    echo "| Modules |"
+    echo "| --- |"
 } >> "$readme_path"
 
 # Loop through the filtered repositories and get their count
 for repo in $repos; do
-    count=$(gh search code "org:hmcts" "language:HCL" "$repo" --limit 500 | wc -l)
-    search_url="https://github.com/search?q=org%3Ahmcts+$repo+language%3AHCL&type=code&l=HCL"
-    echo "| $repo | <a href=\"$search_url\" target=\"_blank\">$count</a> |" >> "$readme_path"
-    sleep 10  # due to rate limit on github, we can only have 10 requests per minute for Code Search API
+    # this below commmand works but there seems to be discrepancy between count I am getting from gh command line and github site search so turning it off
+    # count=$(gh search code "org:hmcts" "language:HCL" "$repo" --limit 500 | wc -l)
+    search_url="https://github.com/search?q=org%3Ahmcts+$repo+language%3AHCL++NOT+is%3Aarchived&type=code&l=HCL"
+    echo "| <a href=\"$search_url\" target=\"_blank\">$repo</a> |" >> "$readme_path"
+    # sleep 10  # due to rate limit on github, we can only have 10 requests per minute for Code Search API
 done
