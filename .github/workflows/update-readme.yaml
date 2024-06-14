@@ -18,3 +18,12 @@ jobs:
 
       - name: Run Script
         run: bash ./scripts/gh-call.sh
+
+      - name: Commit to master
+        continue-on-error: true
+        run: |
+          git config user.name hmcts-platform-operations
+          git config user.email github-platform-operations@hmcts.net
+          git add .
+          git commit -m "auto update modules"
+          git push
