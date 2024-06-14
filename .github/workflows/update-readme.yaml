@@ -1,0 +1,20 @@
+name: Update ReadMe
+run-name: Update ReadMe
+on:
+  schedule:
+    - cron:  '00 8 * * *'
+  workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+          token: ${{ env.GH_TOKEN }}
+                    
+      - name: Update schedule
+        run: bash ./scripts/gh-call.sh
