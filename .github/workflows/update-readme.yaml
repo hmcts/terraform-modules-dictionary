@@ -16,7 +16,5 @@ jobs:
           fetch-depth: '0'
           token: ${{ env.GH_TOKEN }}
 
-      - name: Update schedule
+      - name: Run Script
         run: bash ./scripts/gh-call.sh
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

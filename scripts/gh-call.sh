@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+set -ex
 # List repositories in the organization and filter by module and HCL
 limit=500
 repos=$(gh search repos "org:hmcts" "language:HCL" "module in:name" --limit $limit | awk '{print $1}')
