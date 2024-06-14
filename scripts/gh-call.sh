@@ -1,6 +1,5 @@
 #!/bin/bash
 
-export GH_TOKEN=$1
 
 # List repositories in the organization and filter by module and HCL
 limit=500
