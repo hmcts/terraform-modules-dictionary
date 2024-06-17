@@ -3,7 +3,7 @@
 set -ex
 # List repositories in the organization and filter by module and HCL
 limit=500
-repos=$(gh search repos "org:hmcts" "language:HCL" "module in:name" --limit $limit | awk '{print $1}')
+repos=$(gh search repos "org:hmcts" "language:HCL" "module in:name" --archived=false --limit $limit | awk '{print $1}')
 
 # Define the new section header
 new_section_header="## Module Consumption Counts"
