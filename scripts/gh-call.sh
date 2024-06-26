@@ -33,5 +33,5 @@ for repo in $repos; do
     search_url="https://github.com/search?q=org%3Ahmcts+$repo+language%3AHCL++NOT+is%3Aarchived&type=code&l=HCL"
     echo "| <a href=\"https://github.com/$repo\" target=\"_blank\">$repo</a> | <a href=\"$search_url\" target=\"_blank\">$count</a> |" >> "$readme_path"
     # echo "| <a href=\"$search_url\" target=\"_blank\">$repo</a> |" >> "$readme_path"
-    sleep 8  # due to rate limit on github, we can only have 10 requests per minute for Code Search API
+    sleep 10  # due to rate limit on github, we can only have 10 requests per minute for Code Search API
 done
