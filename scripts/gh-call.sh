@@ -9,7 +9,7 @@ repos=$(gh search repos "org:hmcts" "language:HCL" "module in:name" --archived=f
 new_section_header="## Module Consumption Counts"
 
 # Path to the README.md file
-readme_path="../README.md"
+readme_path="README.md"
 
 # Remove the existing section if it exists
 if grep -q "$new_section_header" "$readme_path"; then
