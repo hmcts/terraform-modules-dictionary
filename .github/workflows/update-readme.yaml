@@ -2,7 +2,7 @@ name: Update ReadMe
 run-name: Update ReadMe
 on:
   schedule:
-    - cron:  '00 8 * * *'
+    - cron: "0 11 * * 1" # every Monday 11am UTC
   workflow_dispatch:
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
